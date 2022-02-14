@@ -1,11 +1,8 @@
 # Northcoders News API
 
-You will need to create two .env files for your project: .env.test and .env.development. Into each, add PGDATABASE=<database_name_here>, with the correct database name for that environment.
+You will need to create two .env files for your project: .env.test and .env.development. Into each, add PGDATABASE=<database_name_here>, with the correct database name for that environment (see /db/setup.sql for the database names).
 
-Below are the names of the databases you will need when making a successful connection locally:
+You will also need to require in the following npm packages:
 
-News DB:
-PGDATABASE=nc_news
-
-News Test DB:
-PGDATABASE=nc_news_test
+- pg
+- dotenv
