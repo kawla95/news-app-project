@@ -33,3 +33,16 @@ describe("GET - api/topics", () => {
       });
   });
 });
+describe("/api/articles/:article_id", () => {
+  test("GET status 200 & article with id from client", () => {
+    return request(app)
+      .get("/api/articles/1")
+      .expect(200)
+      .then((response) => {
+        console.log(response.body.receivedArticleObject);
+        expect(response.body.receivedArticleObject).toEqual(
+          response.body.receivedArticleObject
+        );
+      });
+  });
+});
