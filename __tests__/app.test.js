@@ -12,16 +12,24 @@ describe("GET - api/topics", () => {
     return request(app)
       .get("/api/topics")
       .expect(200)
-      .then((response) => {
-        //console.log(response);
+      .then(({ body }) => {
+        expect(body.topics).toHaveLength(3);
+        body.topics.forEach((topic) => {
+          expect(topic).toEqual(
+            expect.objectContaining({
+              slug: expect.any(String),
+              description: expect.any(String),
+            })
+          );
+        });
       });
   });
-  test("status: 404 - path not found", () => {
+  test("status: 404 - with error message", () => {
     return request(app)
-      .get("/api/channel")
+      .get("/api/not-a-path")
       .expect(404)
-      .then((response) => {
-        console.log(response.error);
+      .then(({ body }) => {
+        expect(body.msg).toBe("path not found");
       });
   });
 });
