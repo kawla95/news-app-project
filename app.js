@@ -5,9 +5,11 @@ const {
   handleInternalServerError,
 } = require("./errorhandling");
 
-app.use(express.json());
-
-const { getTopics, getArticleById } = require("./controllers/news");
+const {
+  getTopics,
+  getArticleById,
+  patchArticleById,
+} = require("./controllers/news");
 
 app.get("/api/topics", getTopics);
 

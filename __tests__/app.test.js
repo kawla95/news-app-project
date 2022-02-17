@@ -39,10 +39,8 @@ describe("/api/articles/:article_id", () => {
       .get("/api/articles/1")
       .expect(200)
       .then((response) => {
-        console.log(response.body.receivedArticleObject);
-        expect(response.body.receivedArticleObject).toEqual(
-          response.body.receivedArticleObject
-        );
+        console.log(response.body.article);
+        expect(response.body.article).toEqual(response.body.article);
       });
   });
 });
