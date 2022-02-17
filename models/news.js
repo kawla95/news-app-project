@@ -14,7 +14,13 @@ exports.selectArticle = (articleId) => {
       [articleId]
     )
     .then((response) => {
-      console.log(response.rows);
+      console.log(response);
       return response.rows[0];
     });
+};
+exports.selectUsers = () => {
+  return db.query(`SELECT * FROM users;`).then((response) => {
+    console.log(response.rows);
+    return response.rows;
+  });
 };
