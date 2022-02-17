@@ -5,11 +5,7 @@ const {
   handleInternalServerError,
 } = require("./errorhandling");
 
-const {
-  getTopics,
-  getArticleById,
-  patchArticleById,
-} = require("./controllers/news");
+const { getTopics, getArticleById } = require("./controllers/news");
 
 app.get("/api/topics", getTopics);
 
