@@ -1,4 +1,9 @@
-const { selectTopics, selectArticle, selectUsers } = require("../models/news");
+const {
+  selectTopics,
+  selectArticle,
+  selectUsers,
+  selectArticles,
+} = require("../models/news");
 
 exports.getTopics = (req, res, next) => {
   selectTopics()
@@ -24,6 +29,15 @@ exports.getUsers = (req, res, next) => {
   selectUsers()
     .then((users) => {
       res.status(200).send({ users });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+exports.getArticles = (req, res, next) => {
+  selectArticles(sort_by)
+    .then((articles) => {
+      res.status(200).send(articles);
     })
     .catch((err) => {
       next(err);

@@ -63,3 +63,13 @@ describe("/api/users", () => {
       });
   });
 });
+describe.only("/api/articles", () => {
+  test("GET status 500 - responds with a string of Internal Server Error", () => {
+    return request(app)
+      .get("/api/articles")
+      .expect(200)
+      .then((response) => {
+        console.log(response.body);
+      });
+  });
+});
