@@ -5,9 +5,11 @@ const {
   handleInternalServerError,
 } = require("./errorhandling");
 
-const { getTopics } = require("./controllers/news");
+const { getTopics, getArticleById } = require("./controllers/news");
 
 app.get("/api/topics", getTopics);
+
+app.get("/api/articles/:articleId", getArticleById);
 
 app.all("/*", handleIncorrectPath);
 
