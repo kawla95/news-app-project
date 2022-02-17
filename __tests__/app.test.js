@@ -63,7 +63,7 @@ describe("/api/users", () => {
       });
   });
 });
-describe.only("/api/articles", () => {
+describe("/api/articles", () => {
   test("GET status 500 - responds with a string of Internal Server Error", () => {
     return request(app)
       .get("/api/articles")

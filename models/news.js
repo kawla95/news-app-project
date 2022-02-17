@@ -27,7 +27,7 @@ exports.selectUsers = () => {
 };
 exports.selectArticles = () => {
   return db
-    .query(`SELECT articles.*, FROM articles SORT BY created_at DESC;`)
+    .query(`SELECT * FROM articles ORDER BY created_at DESC;`)
     .then((response) => {
       console.log(response.rows);
       return response.rows;

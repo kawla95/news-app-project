@@ -35,7 +35,7 @@ exports.getUsers = (req, res, next) => {
     });
 };
 exports.getArticles = (req, res, next) => {
-  selectArticles(sort_by)
+  selectArticles()
     .then((articles) => {
       res.status(200).send(articles);
     })
