@@ -39,7 +39,6 @@ describe("/api/articles/:article_id", () => {
       .get("/api/articles/1")
       .expect(200)
       .then((response) => {
-        //console.log(response.body.article);
         expect(response.body.article).toEqual(response.body.article);
       });
   });
@@ -64,12 +63,12 @@ describe("/api/users", () => {
   });
 });
 describe("/api/articles", () => {
-  test("GET status 500 - responds with a string of Internal Server Error", () => {
+  test("GET status 200 - responds with an array of articles objects", () => {
     return request(app)
       .get("/api/articles")
       .expect(200)
       .then((response) => {
-        console.log(response.body);
+        return response.body;
       });
   });
 });
