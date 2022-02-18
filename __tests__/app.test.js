@@ -39,7 +39,6 @@ describe("/api/articles/:article_id", () => {
       .get("/api/articles/1")
       .expect(200)
       .then((response) => {
-        //console.log(response.body.article);
         expect(response.body.article).toEqual(response.body.article);
       });
   });
@@ -60,6 +59,16 @@ describe("/api/users", () => {
             })
           );
         });
+      });
+  });
+});
+describe("/api/articles", () => {
+  test("GET status 200 - responds with an array of articles objects", () => {
+    return request(app)
+      .get("/api/articles")
+      .expect(200)
+      .then((response) => {
+        return response.body;
       });
   });
 });

@@ -1,3 +1,4 @@
+const { response } = require("express");
 const db = require("../db/connection");
 
 exports.selectTopics = () => {
@@ -14,13 +15,18 @@ exports.selectArticle = (articleId) => {
       [articleId]
     )
     .then((response) => {
-      console.log(response);
       return response.rows[0];
     });
 };
 exports.selectUsers = () => {
   return db.query(`SELECT * FROM users;`).then((response) => {
-    console.log(response.rows);
     return response.rows;
   });
+};
+exports.selectArticles = () => {
+  return db
+    .query(`SELECT * FROM articles ORDER BY created_at DESC;`)
+    .then((response) => {
+      return response.rows;
+    });
 };
