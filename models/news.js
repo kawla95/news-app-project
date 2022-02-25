@@ -27,6 +27,15 @@ exports.selectArticles = () => {
   return db
     .query(`SELECT * FROM articles ORDER BY created_at DESC;`)
     .then((response) => {
+      console.log(response);
+      return response.rows;
+    });
+};
+
+exports.selectCommentsByArticleId = (articleId) => {
+  return db
+    .query(`SELECT * FROM comments WHERE article_id = $1;`, [articleId])
+    .then((response) => {
       return response.rows;
     });
 };

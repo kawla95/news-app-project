@@ -62,13 +62,37 @@ describe("/api/users", () => {
       });
   });
 });
-describe("/api/articles", () => {
-  test("GET status 200 - responds with an array of articles objects", () => {
+
+describe("/api/:article_id/comments", () => {
+  test("GET status 200 & comments of the article id from the client", () => {
     return request(app)
-      .get("/api/articles")
+      .get("/api/articles/1/comments")
       .expect(200)
-      .then((response) => {
-        return response.body;
+      .then((res) => {
+        expect(res.body).toBeInstanceOf(Array);
+        expect(res.body).toHaveLength(11);
       });
   });
 });
+// describe("/api/:article_id/comments", () => {
+//   test("GET status 200 - responds with an array of articles objects", () => {
+//     return request(app)
+//       .get("/api/articles/1/comments")
+//       .expect(200)
+//       .then(({ body }) => {
+//         console.log({ body });
+//         expect(body.comments).toHaveLength(11);
+//         body.comments.forEach((comment) => {
+//           expect(comments).toEqual(
+//             expect.objectContaining({
+//               body: expect.any(String),
+//               votes: expect.any(String),
+//               author: expect.any(String),
+//               article_id: expect.any(String),
+//               created_at: expect.any(String),
+//             })
+//           );
+//         });
+//       });
+//   });
+// });
