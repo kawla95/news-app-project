@@ -28,10 +28,12 @@ exports.selectUsers = () => {
 };
 exports.selectArticles = () => {
   return db
-    .query(`SELECT * FROM articles ORDER BY created_at DESC;`)
+    .query(
+      `SELECT.*, COUNT(comments.comment_id) AS comment_count FROM articles JOIN comments ON articles.article_id = comments.article_id GROUP BY articles.article_id ORDER BY created_at DESC;;`
+    )
     .then((response) => {
-      console.log(response);
-      return response.rows;
+      console.log(response.rows);
+      return response.rows[0];
     });
 };
 
@@ -42,3 +44,4 @@ exports.selectCommentsByArticleId = (articleId) => {
       return response.rows;
     });
 };
+// `SELECT.*, COUNT(comments.comment_id) AS comment_count FROM articles JOIN comments ON articles.article_id = comments.article_id GROUP BY articles.article_id ORDER BY created_at DESC;`

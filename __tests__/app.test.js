@@ -101,3 +101,29 @@ describe("/api/:article_id/comments", () => {
 //       });
 //   });
 //});
+
+describe.only("/api/articles", () => {
+  test("GET status 200 - responds with an array of articles objects", () => {
+    return request(app)
+      .get("/api/articles")
+      .expect(500)
+      .then((response) => {
+        console.log(response.body);
+        return response.body;
+        //         // expect(response.body).toEqual(
+        //         //   expect.objectContaining([
+        //         //     {
+        //         //       article_id: expect.any(Number),
+        //         //       title: expect.any(String),
+        //         //       body: expect.any(String),
+        //         //       votes: expect.any(Number),
+        //         //       author: expect.any(String),
+        //         //       created_at: expect.any(String),
+        //         //       //comment_count: expect.any(String),
+        //         //       title: expect.any(String),
+        //             },
+        //           ])
+        //         );
+      });
+  });
+});
