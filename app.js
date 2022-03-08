@@ -26,7 +26,7 @@ app.get("/api/articles", getArticles);
 
 app.get("/api/articles/:articleId/comments", getCommentsByArticleId);
 
-app.get("/api", getApiResponse);
+// app.get("/api", getApiResponse);
 
 app.all("/*", handleIncorrectPath);
 
