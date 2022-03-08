@@ -47,11 +47,46 @@ exports.getCommentsByArticleId = (req, res, next) => {
   const { articleId } = req.params;
   selectCommentsByArticleId(articleId)
     .then((comments) => {
-      if (comments.length > 0) {
-        res.status(200).send(comments);
-      } else {
-        return Promise.reject({ status: 404, msg: "Path not found" });
-      }
+      res.status(200).send(comments);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+exports.getApiResponse = (req, res, next) => {
+  const apiDescription = {
+    "GET /api": {
+      description:
+        "serves up a json representation of all the available endpoints of the api",
+    },
+    "GET /api/topics": {
+      description: "serves an array of all topics",
+    },
+    "GET /api/articles": {
+      description: "serves an array of all topics",
+      exampleResponse: {
+        articles: [
+          {
+            title: "Seafood substitutions are increasing",
+            topic: "cooking",
+            author: "weegembump",
+            body: "Text from the article..",
+            created_at: 1527695953341,
+          },
+        ],
+      },
+    },
+    "GET /api/articles/:articleId": {
+      description: "serves an article object when provided a valid article ID",
+    },
+    "GET /api/articles/:articleId/comments": {
+      description:
+        "serves a comments object relating to an article when provided a valid article ID",
+    },
+  }
+    .then((apiDescription) => {
+      console.log(apiDescription);
+      res.status(200).send(apiDescription);
     })
     .catch((err) => {
       next(err);

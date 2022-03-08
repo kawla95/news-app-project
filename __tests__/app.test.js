@@ -74,25 +74,18 @@ describe("/api/:article_id/comments", () => {
       });
   });
 });
-// describe("/api/:article_id/comments", () => {
-//   test("GET status 200 - responds with an array of articles objects", () => {
-//     return request(app)
-//       .get("/api/articles/1/comments")
-//       .expect(200)
-//       .then(({ body }) => {
-//         console.log({ body });
-//         expect(body.comments).toHaveLength(11);
-//         body.comments.forEach((comment) => {
-//           expect(comments).toEqual(
-//             expect.objectContaining({
-//               body: expect.any(String),
-//               votes: expect.any(String),
-//               author: expect.any(String),
-//               article_id: expect.any(String),
-//               created_at: expect.any(String),
-//             })
-//           );
-//         });
-//       });
-//   });
-// });
+describe.only("/api", () => {
+  test("GET: status 200 & description of all API responses", () => {
+    return request(app)
+      .get("/api")
+      .expect(500)
+      .then((response) => {
+        console.log(response);
+        expect(response.body).toEqual({
+          "GET /api": {
+            description: "delivers a json representation of all api endpoints",
+          },
+        });
+      });
+  });
+});
