@@ -74,18 +74,18 @@ describe("/api/:article_id/comments", () => {
       });
   });
 });
-describe.only("/api", () => {
-  test("GET: status 200 & description of all API responses", () => {
-    return request(app)
-      .get("/api")
-      .expect(500)
-      .then((response) => {
-        console.log(response);
-        expect(response.body).toEqual({
-          "GET /api": {
-            description: "delivers a json representation of all api endpoints",
-          },
-        });
-      });
-  });
-});
+// describe.only("/api", () => {
+//   test("GET: status 200 & description of all API responses", () => {
+//     return request(app)
+//       .get("/api")
+//       .expect(500)
+//       .then((response) => {
+//         console.log(response);
+//         expect(response.body).toEqual({
+//           "GET /api": {
+//             description: "delivers a json representation of all api endpoints",
+//           },
+//         });
+//       });
+//   });
+// });

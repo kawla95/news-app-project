@@ -53,42 +53,42 @@ exports.getCommentsByArticleId = (req, res, next) => {
       next(err);
     });
 };
-exports.getApiResponse = (req, res, next) => {
-  const apiDescription = {
-    "GET /api": {
-      description:
-        "serves up a json representation of all the available endpoints of the api",
-    },
-    "GET /api/topics": {
-      description: "serves an array of all topics",
-    },
-    "GET /api/articles": {
-      description: "serves an array of all topics",
-      exampleResponse: {
-        articles: [
-          {
-            title: "Seafood substitutions are increasing",
-            topic: "cooking",
-            author: "weegembump",
-            body: "Text from the article..",
-            created_at: 1527695953341,
-          },
-        ],
-      },
-    },
-    "GET /api/articles/:articleId": {
-      description: "serves an article object when provided a valid article ID",
-    },
-    "GET /api/articles/:articleId/comments": {
-      description:
-        "serves a comments object relating to an article when provided a valid article ID",
-    },
-  }
-    .then((apiDescription) => {
-      console.log(apiDescription);
-      res.status(200).send(apiDescription);
-    })
-    .catch((err) => {
-      next(err);
-    });
-};
+// exports.getApiResponse = (req, res, next) => {
+//   const apiDescription = {
+//     "GET /api": {
+//       description:
+//         "serves up a json representation of all the available endpoints of the api",
+//     },
+//     "GET /api/topics": {
+//       description: "serves an array of all topics",
+//     },
+//     "GET /api/articles": {
+//       description: "serves an array of all topics",
+//       exampleResponse: {
+//         articles: [
+//           {
+//             title: "Seafood substitutions are increasing",
+//             topic: "cooking",
+//             author: "weegembump",
+//             body: "Text from the article..",
+//             created_at: 1527695953341,
+//           },
+//         ],
+//       },
+//     },
+//     "GET /api/articles/:articleId": {
+//       description: "serves an article object when provided a valid article ID",
+//     },
+//     "GET /api/articles/:articleId/comments": {
+//       description:
+//         "serves a comments object relating to an article when provided a valid article ID",
+//     },
+//   }
+//     .then((apiDescription) => {
+//       console.log(apiDescription);
+//       res.status(200).send(apiDescription);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// };
